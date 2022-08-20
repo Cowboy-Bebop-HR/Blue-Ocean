@@ -42,8 +42,9 @@ background-color: #0D1317;
 // overflow: scroll;
 display: flex;
 flex-direction: column;
-margin-left: 40px;
+margin-left: 55px;
 margin-top: 40px;
+box-shadow: 0px -1px 10px #738984;
 `
 
 // const QueueContainer = styled.div`

@@ -18,7 +18,7 @@ export default function Track({ track, username, token }) {
         setDislikeCount(response.data.dislikes);
       })
       .catch((err) => {
-        console.log(err);
+        console.log('error geting likes', err);
       });
     console.log("testing useEffect change");
   }, []);

@@ -117,11 +117,12 @@ const ChatContainer = styled.div`
   flex-direction: column;
   width: 16vw;
   height: 90vh;
-  margin-right: 40px;
+  margin-right: 55px;
   margin-top: 40px;
   background: #0D1317;
   border: 2px solid #000000;
   border-radius: 20px;
+  box-shadow: 0px -1px 10px #738984;
 `;
 const Messages = styled.ul`
   list-style-type: none;

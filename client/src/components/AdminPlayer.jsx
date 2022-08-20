@@ -124,26 +124,26 @@ function WebPlayback(props) {
     );
   }
 
-  setTimeout(() => {
-    // Player connected and initialized; store room state in database using POST
-    player.getCurrentState()
-      .then((state) => {
-        console.log('--->', state);
-        let initialRoomData = {
-          roomID: props.roomID,
-          paused: state.paused,
-          position: state.position,
-          playingSong: state.track_window.current_track.uri
-        };
-        return initialRoomData;
-      })
-      .then((initialRoomData) => {
-        return axios.post('/room', initialRoomData);
-      })
-      .catch((error) => {
-        console.log('BANGBANGBANG', error);
-      });
-  }, 500);
+  // setTimeout(() => {
+  //   // Player connected and initialized; store room state in database using POST
+  //   player.getCurrentState()
+  //     .then((state) => {
+  //       console.log('--->', state);
+  //       let initialRoomData = {
+  //         roomID: props.roomID,
+  //         paused: state.paused,
+  //         position: state.position,
+  //         playingSong: state.track_window.current_track.uri
+  //       };
+  //       return initialRoomData;
+  //     })
+  //     .then((initialRoomData) => {
+  //       return axios.post('/room', initialRoomData);
+  //     })
+  //     .catch((error) => {
+  //       console.log('BANGBANGBANG', error);
+  //     });
+  // }, 500);
 
   // Handler functions to handle what happens when someone (preferably the host) interacts with the player
   // Host presses PLAY/PAUSE button on player
@@ -197,25 +197,25 @@ function WebPlayback(props) {
       });
   };
 
-  setInterval(() => {
-    console.log('5 sec room state update!');
-    player.getCurrentState()
-      .then((state) => {
-        let roomData = {
-          roomID: props.roomID,
-          paused: state.paused,
-          position: state.position,
-          playingSong: state.track_window.current_track.uri
-        };
-        return roomData;
-      })
-      .then((roomData) => {
-        return axios.put('/room', roomData);
-      })
-      .catch((error) => {
-        console.log('Error occurred when attempting to PUT room data to server:', error);
-      });
-  }, 5000);
+  // setInterval(() => {
+  //   console.log('5 sec room state update!');
+  //   player.getCurrentState()
+  //     .then((state) => {
+  //       let roomData = {
+  //         roomID: props.roomID,
+  //         paused: state.paused,
+  //         position: state.position,
+  //         playingSong: state.track_window.current_track.uri
+  //       };
+  //       return roomData;
+  //     })
+  //     .then((roomData) => {
+  //       return axios.put('/room', roomData);
+  //     })
+  //     .catch((error) => {
+  //       console.log('Error occurred when attempting to PUT room data to server:', error);
+  //     });
+  // }, 5000);
 
   const saveTrack = (uri) => {
     let songId = uri.slice(14)
@@ -249,7 +249,7 @@ function WebPlayback(props) {
           </ButtonsContainer>
           <RoomCodeLink
             onClick={() => handleCopyLink()}
-            style={{ backgroundColor: isCopied ? '#70CAD1' : 'white'}}
+            style={{ backgroundColor: isCopied ? '#70CAD1' : '#D9D9D9'}}
           >
             <div style={{marginRight: '4px', marginTop: '1px'}}>
               <FaCopy size={15}/>
@@ -262,13 +262,14 @@ function WebPlayback(props) {
 }
 
 const RoomCodeLink = styled.div`
-  background-color: white;
+  background-color: #D9D9D9;
   color: black;
   font-size: 16px;
   cursor: pointer;
   display: inline-flex;
   border-radius: 5px;
-  margin-top: 20px;
+  margin-top: 12px;
+  margin-bottom: 35px;
   box-sizing: border-box;
   padding: 10px;
 
@@ -289,8 +290,8 @@ const Skip = styled(RiSkipForwardLine)`
   width: 30px;
   border-radius: 50%;
   border: 2px solid #D9D9D9;
-  background-color: #0D1317;
-  color: #D9D9D9;
+  background-color: #D9D9D9;
+  color: #0D1317;
   font-size: 25px;
   cursor: pointer;
   margin: 7px;
@@ -298,6 +299,7 @@ const Skip = styled(RiSkipForwardLine)`
   &:hover {
     color: #D9D9D9;
     background-color: #0D1317;
+    border: 2px solid #70CAD1;
     transform: scale(1.1);
   };
 `
@@ -306,8 +308,8 @@ const Save = styled(RiDownloadLine)`
   width: 30px;
   border-radius: 50%;
   border: 2px solid #D9D9D9;
-  background-color: #0D1317;
-  color: #D9D9D9;
+  background-color: #D9D9D9;
+  color: #0D1317;
   font-size: 25px;
   cursor: pointer;
   margin: 7px;
@@ -315,6 +317,7 @@ const Save = styled(RiDownloadLine)`
   &:hover {
     color: #D9D9D9;
     background-color: #0D1317;
+    border: 2px solid #70CAD1;
     transform: scale(1.1);
   };
 `
@@ -365,6 +368,8 @@ const Container = styled.div`
   top: 100px;
   left: 0;
   right: 0;
+  margin-left: 430px;
+  width: 50%;
 `
 
 const MainWrapper = styled.div`
@@ -374,23 +379,26 @@ const MainWrapper = styled.div`
   height: 100%;
   margin: 0 auto;
   justify-content: center;
-  width: 80%;
+  width: 60%;
 `
 
 const SongImg = styled.img`
   border: 2px solid black;
   border-radius: 10px;
   width: 25vw;
+  box-shadow: 0px -1px 10px #738984;
 `
 
 const SongInfo = styled.div`
   font-size: 30px;
   margin: 20px;
   text-align: center;
+  text-shadow: 0 0 3px #ffffff, 0 0 5px #8181c6;
 `
 
 const AddedBy = styled.div`
   font-size: 20px;
+  text-shadow: 0 0 3px #ffffff, 0 0 5px #8181c6;
 `
 
 export default WebPlayback;

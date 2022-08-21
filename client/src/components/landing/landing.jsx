@@ -12,7 +12,7 @@ function Landing({ username, setUsername, device_id, setDevice_id }) {
 
   useEffect(() => {
     async function getToken() {
-      const response = await fetch(`http://localhost:3001/auth/token?authCode=${window.location.href.slice(window.location.href.indexOf("authCode=")+9, window.location.href.length)}`);
+      const response = await fetch(`http://13.56.115.246:3001/auth/token?authCode=${window.location.href.slice(window.location.href.indexOf("authCode=")+9, window.location.href.length)}`);
       const json = await response.json();
       if (json.access_token && json.refresh_token) {
         console.log('inside');

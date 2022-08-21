@@ -39,7 +39,7 @@ module.exports = (code, authCode, callback) => {
     url: 'https://accounts.spotify.com/api/token',
     form: {
       code: code,
-      redirect_uri: "http://localhost:3001/auth/callback",
+      redirect_uri: "http://13.56.115.246:3001/auth/callback",
       grant_type: 'authorization_code'
     },
     headers: {

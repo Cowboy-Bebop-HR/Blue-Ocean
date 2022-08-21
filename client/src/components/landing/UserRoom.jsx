@@ -16,7 +16,7 @@ export default function UserRoom({ token, refreshToken, username, setUsername, d
 
   useEffect(()=> {
 
-    axios.get('http://localhost:3001/room', {params : { roomID : roomID }})
+    axios.get('http://13.56.115.246:3001/room', {params : { roomID : roomID }})
     .then((res)=>{
       console.log('----->dududu', res.data.currentSong.playingSong);
       setQueue(res.data.queueData);

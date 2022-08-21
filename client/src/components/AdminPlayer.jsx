@@ -229,7 +229,7 @@ function WebPlayback(props) {
   }
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(`http://localhost:3001/?roomID=${props.roomID}`);
+    navigator.clipboard.writeText(`http://13.56.115.246:3001/?roomID=${props.roomID}`);
     setIsCopied(true);
     setTimeout(() => {
       setIsCopied(false)

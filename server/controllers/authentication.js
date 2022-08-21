@@ -27,7 +27,7 @@ module.exports = {
 
     var state = generateRandomString(16);
 
-    let redirectURI = 'http://localhost:3001/auth/callback';
+    let redirectURI = 'http://13.56.115.246:3001/auth/callback';
 
     var auth_query_parameters = new URLSearchParams({
       response_type: "code",

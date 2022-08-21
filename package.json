@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server-dev": "webpack --mode development --watch & npx nodemon ./server/index.js",
-    "build": "webpack --config ./webpack.config.js"
+    "build": "webpack --config ./webpack.config.js --watch"
   },
   "repository": {
     "type": "git",
